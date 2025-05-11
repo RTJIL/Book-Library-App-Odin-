@@ -54,7 +54,7 @@ createDialogButton.textContent = "Close"
 
 createDialog.appendChild(createForm)
 
-//
+// refactor/migrate-constructors-to-classes
 const createInputTitleLabel = document.createElement("label")
 createInputTitleLabel.setAttribute("for", "title")
 createInputTitleLabel.textContent = "Title: "
