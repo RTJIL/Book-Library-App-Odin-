@@ -1,5 +1,6 @@
 const myLibrary = []
 
+//creating class for using constructor inside it, replace basic constructor func
 class Book {
   constructor(name, pages, id) {
     this.name = name
@@ -8,11 +9,12 @@ class Book {
   }
 }
 
+/* 
 function Book(name, pages, id) {
   this.name = name
   this.pages = pages
   this.id = id
-}
+} */
 
 function addBookToLibrary(name, pages) {
   const obj = new Book(name, pages, crypto.randomUUID())
