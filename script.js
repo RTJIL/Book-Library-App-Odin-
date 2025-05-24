@@ -56,8 +56,10 @@ createInputTitleLabel.textContent = 'Title: ';
 
 const createInputTitle = document.createElement('input');
 createInputTitle.setAttribute('type', 'text');
+createInputTitle.setAttribute('required', '');
 createInputTitle.setAttribute('placeholder', 'Atomic Habits');
 createInputTitle.setAttribute('id', 'title');
+createInputTitle.setAttribute('autocomplete', 'off')
 //
 
 const createInputPagesLabel = document.createElement('label');
@@ -66,8 +68,10 @@ createInputPagesLabel.textContent = 'Pages: ';
 
 const createInputPages = document.createElement('input');
 createInputPages.setAttribute('type', 'text');
+createInputPages.required = true;
 createInputPages.setAttribute('placeholder', '991');
 createInputPages.setAttribute('id', 'pages');
+createInputPages.setAttribute('autocomplete', 'off')
 
 //
 
@@ -172,5 +176,7 @@ pages.addEventListener('input', (event) => {
     pages.setCustomValidity('');
   }
 });
+
+
 
 myLibraryLoop();
