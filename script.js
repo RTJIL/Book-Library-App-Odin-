@@ -1,184 +1,176 @@
-const myLibrary = []
+const myLibrary = [];
 
 //creating class for using constructor inside it, replace basic constructor func
 class Book {
   constructor(name, pages, id) {
-    this.name = name
-    this.pages = pages
-    this.id = id
+    this.name = name;
+    this.pages = pages;
+    this.id = id;
   }
 }
 
 function addBookToLibrary(name, pages) {
-  const obj = new Book(name, pages, crypto.randomUUID())
-  myLibrary.push(obj)
+  const obj = new Book(name, pages, crypto.randomUUID());
+  myLibrary.push(obj);
 }
 
 //creating button using DOM
 
-const buttonContainer = document.getElementById("createNewBookDiv")
-const createButton = document.createElement("button")
+const buttonContainer = document.getElementById('createNewBookDiv');
+const createButton = document.createElement('button');
 
-createButton.textContent = "New Book"
-createButton.id = "createNewBookButton"
+createButton.textContent = 'New Book';
+createButton.id = 'createNewBookButton';
 
-buttonContainer.appendChild(createButton)
+buttonContainer.appendChild(createButton);
 
 //
 
 //creating dialog using DOM
 
-const dialogContainer = document.getElementById("createNewBookDiv")
+const dialogContainer = document.getElementById('createNewBookDiv');
 
-const createDialog = document.createElement("dialog")
-createDialog.id = "data-modal"
+const createDialog = document.createElement('dialog');
+createDialog.id = 'data-modal';
 
-dialogContainer.appendChild(createDialog)
+dialogContainer.appendChild(createDialog);
 
-const createForm = document.createElement("form")
+const createForm = document.createElement('form');
 
-const createDiv = document.createElement("div")
-createDiv.textContent = "This is a modal"
+const createDiv = document.createElement('div');
+createDiv.textContent = 'This is a modal';
 
-const createDialogButton = document.createElement("button")
+const createDialogButton = document.createElement('button');
+
 // createDialogButton.classList.add("data-close-modal");
-createDialogButton.id = "data-close-modal"
-createDialogButton.textContent = "Close"
 
-createDialog.appendChild(createForm)
+createDialogButton.id = 'data-close-modal';
+createDialogButton.textContent = 'Close';
+
+createDialog.appendChild(createForm);
 
 // refactor/migrate-constructors-to-classes
-const createInputTitleLabel = document.createElement("label")
-createInputTitleLabel.setAttribute("for", "title")
-createInputTitleLabel.textContent = "Title: "
+const createInputTitleLabel = document.createElement('label');
+createInputTitleLabel.setAttribute('for', 'title');
+createInputTitleLabel.textContent = 'Title: ';
 
-const createInputTitle = document.createElement("input")
-createInputTitle.setAttribute("type", "text")
-createInputTitle.setAttribute("placeholder", "Atomic Habits")
-createInputTitle.setAttribute("id", "title")
+const createInputTitle = document.createElement('input');
+createInputTitle.setAttribute('type', 'text');
+createInputTitle.setAttribute('placeholder', 'Atomic Habits');
+createInputTitle.setAttribute('id', 'title');
 //
 
-const createInputPagesLabel = document.createElement("label")
-createInputPagesLabel.setAttribute("for", "pages")
-createInputPagesLabel.textContent = "Pages: "
+const createInputPagesLabel = document.createElement('label');
+createInputPagesLabel.setAttribute('for', 'pages');
+createInputPagesLabel.textContent = 'Pages: ';
 
-const createInputPages = document.createElement("input")
-createInputPages.setAttribute("type", "text")
-createInputPages.setAttribute("placeholder", "991")
-createInputPages.setAttribute("id", "pages")
-
-//
-
-const createSubmitButton = document.createElement("button")
-createSubmitButton.setAttribute("type", "submit")
-createSubmitButton.textContent = "Submit"
-
-const createCancelButton = document.createElement("button")
-createCancelButton.setAttribute("type", "submit")
-createCancelButton.setAttribute("formmethod", "dialog")
-createCancelButton.textContent = "Cancel"
-
-createForm.appendChild(createInputTitleLabel)
-createForm.appendChild(createInputTitle)
-
-createForm.appendChild(createInputPagesLabel)
-createForm.appendChild(createInputPages)
+const createInputPages = document.createElement('input');
+createInputPages.setAttribute('type', 'text');
+createInputPages.setAttribute('placeholder', '991');
+createInputPages.setAttribute('id', 'pages');
 
 //
 
-const createButtonDiv = document.createElement("div")
+const createSubmitButton = document.createElement('button');
+createSubmitButton.setAttribute('type', 'submit');
+createSubmitButton.textContent = 'Submit';
 
-createForm.appendChild(createButtonDiv)
+const createCancelButton = document.createElement('button');
+createCancelButton.setAttribute('type', 'submit');
+createCancelButton.setAttribute('formmethod', 'dialog');
+createCancelButton.textContent = 'Cancel';
 
-createButtonDiv.appendChild(createSubmitButton)
+createForm.appendChild(createInputTitleLabel);
+createForm.appendChild(createInputTitle);
+
+createForm.appendChild(createInputPagesLabel);
+createForm.appendChild(createInputPages);
+
+//
+
+const createButtonDiv = document.createElement('div');
+
+createForm.appendChild(createButtonDiv);
+
+createButtonDiv.appendChild(createSubmitButton);
 // createButtonDiv.appendChild(createCancelButton);
 //
 
-const openButton = document.getElementById("createNewBookButton")
-const modal = document.querySelector("#data-modal")
+const openButton = document.getElementById('createNewBookButton');
+const modal = document.querySelector('#data-modal');
 
-openButton.addEventListener("click", function () {
-  modal.showModal()
-})
+openButton.addEventListener('click', function () {
+  modal.showModal();
+});
 
-modal.addEventListener("click", (e) => {
-  const dialogDimensions = modal.getBoundingClientRect()
+modal.addEventListener('click', (e) => {
+  const dialogDimensions = modal.getBoundingClientRect();
   if (
     e.clientX < dialogDimensions.left ||
     e.clientX > dialogDimensions.right ||
     e.clientY < dialogDimensions.top ||
     e.clientY > dialogDimensions.bottom
   ) {
-    modal.close()
+    modal.close();
   }
-})
-
-createForm.addEventListener("submit", function (e) {
-  e.preventDefault()
-
-  const titleValue = createInputTitle.value.trim()
-  const pagesValue = createInputPages.value.trim()
-
-  // Check title: not empty and contains at least one letter
-  if (!/[a-zA-Z]/.test(titleValue)) {
-    alert("Please enter a valid title with at least one letter.")
-    return
-  }
-  // Check pages: must be a number
-  if (!/^\d+$/.test(pagesValue)) {
-    alert("Please enter a valid number for pages.")
-    return
-  }
-  addBookToLibrary(titleValue, parseInt(pagesValue), true)
-  myLibraryLoop()
-  modal.close()
-  createForm.reset()
-})
+});
 
 //Loop through all arr elements
 function myLibraryLoop() {
-  const container = document.getElementById("books")
-  container.innerHTML = "" // clear previous entries
+  const container = document.getElementById('books');
+  container.innerHTML = ''; // clear previous entries
 
   myLibrary.forEach(function (bookObj) {
-    const bookDiv = document.createElement("div")
-    bookDiv.classList.add("book")
+    const bookDiv = document.createElement('div');
+    bookDiv.classList.add('book');
 
     // Loop through each key in the book object
     for (let key in bookObj) {
-      const infoDiv = document.createElement("div")
-      infoDiv.textContent = `${key}: ${bookObj[key]}`
-      bookDiv.appendChild(infoDiv)
+      const infoDiv = document.createElement('div');
+      infoDiv.textContent = `${key}: ${bookObj[key]}`;
+      bookDiv.appendChild(infoDiv);
     }
 
     // Create a button for each book
-    const removeBtn = document.createElement("button")
-    const readBtn = document.createElement("button")
+    const removeBtn = document.createElement('button');
+    const readBtn = document.createElement('button');
 
-    removeBtn.textContent = "Remove"
-    removeBtn.addEventListener("click", function () {
+    removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', function () {
       // remove the book from myLibrary by id
-      const index = myLibrary.findIndex((b) => b.id === bookObj.id)
+      const index = myLibrary.findIndex((b) => b.id === bookObj.id);
       if (index > -1) {
-        myLibrary.splice(index, 1)
-        myLibraryLoop()
+        myLibrary.splice(index, 1);
+        myLibraryLoop();
       }
-    })
+    });
 
-    readBtn.textContent = "Read"
-    readBtn.addEventListener("click", function () {
+    readBtn.textContent = 'Read';
+    readBtn.addEventListener('click', function () {
       // Toggle background color
-      if (readBtn.style.backgroundColor === "lightgreen") {
-        readBtn.style.backgroundColor = ""
+      if (readBtn.style.backgroundColor === 'lightgreen') {
+        readBtn.style.backgroundColor = '';
       } else {
-        readBtn.style.backgroundColor = "lightgreen"
+        readBtn.style.backgroundColor = 'lightgreen';
       }
-    })
-    bookDiv.appendChild(removeBtn)
-    bookDiv.appendChild(readBtn)
+    });
+    bookDiv.appendChild(removeBtn);
+    bookDiv.appendChild(readBtn);
 
-    container.appendChild(bookDiv)
-  })
+    container.appendChild(bookDiv);
+  });
 }
 
-myLibraryLoop()
+const pages = document.querySelector('#pages');
+
+pages.addEventListener('input', (event) => {
+  const value = event.target.value;
+
+  if (isNaN(value) || value.trim() === '') {
+    pages.setCustomValidity('I am expecting pages!');
+  } else {
+    pages.setCustomValidity('');
+  }
+});
+
+myLibraryLoop();
