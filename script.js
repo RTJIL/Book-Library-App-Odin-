@@ -9,13 +9,6 @@ class Book {
   }
 }
 
-/* 
-function Book(name, pages, id) {
-  this.name = name
-  this.pages = pages
-  this.id = id
-} */
-
 function addBookToLibrary(name, pages) {
   const obj = new Book(name, pages, crypto.randomUUID())
   myLibrary.push(obj)
@@ -102,7 +95,6 @@ createButtonDiv.appendChild(createSubmitButton)
 //
 
 const openButton = document.getElementById("createNewBookButton")
-const closeButton = document.getElementById("data-close-modal")
 const modal = document.querySelector("#data-modal")
 
 openButton.addEventListener("click", function () {
@@ -142,14 +134,6 @@ createForm.addEventListener("submit", function (e) {
   modal.close()
   createForm.reset()
 })
-
-//
-
-//add buttonListener and Form, storing elements for bookObjs
-
-const clickButton = document.getElementById("createNewBookButton")
-
-//
 
 //Loop through all arr elements
 function myLibraryLoop() {

@@ -1,0 +1,26 @@
+{
+  "name": "book-library-app-odin-",
+  "version": "1.0.0",
+  "description": "A simple web application to manage a collection of books.",
+  "main": "addBookToLibrary.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RTJIL/Book-Library-App-Odin-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RTJIL/Book-Library-App-Odin-/issues"
+  },
+  "homepage": "https://github.com/RTJIL/Book-Library-App-Odin-#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0"
+  }
+}
